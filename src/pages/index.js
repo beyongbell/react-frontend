@@ -1,4 +1,5 @@
 import * as React from "react"
+import Button from '@mui/material/Button';
 
 const pageStyles = {
   color: "#232129",
@@ -127,7 +128,7 @@ const IndexPage = () => {
   return (
     <main style={pageStyles}>
       <h1 style={headingStyles}>
-        Congratulations
+        Congratulations <Button variant="contained">Hello World</Button>
         <br />
         <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
       </h1>

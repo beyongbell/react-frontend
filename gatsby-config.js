@@ -14,6 +14,7 @@ module.exports = {
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
+    `gatsby-plugin-material-ui`,
     {
       resolve: `gatsby-source-strapi`,
       options: strapiConfig,
