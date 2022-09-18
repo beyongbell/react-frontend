@@ -5,6 +5,7 @@ import Main from '@layouts/main'
 const IndexPage = () => {
   return (
     <Main>
+      <p>Index</p>
     </Main>
   )
 }

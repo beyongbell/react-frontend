@@ -10,13 +10,12 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Badge from '@mui/material/Badge';
-
+ 
 import search from "@images/search.svg";
 import cartIcon from "@images/cart.svg";
 import account from "@images/account-header.svg";
@@ -80,8 +79,14 @@ const Header = ({ categories }) => {
 
   const routes = [...categories, { name: 'Contact Us', strapi_id: "contact", link: '/contact' }];
 
+  const activeIndex = () => {
+    const pathname = typeof window !== "undefined" ? window.location.pathname.split("/")[1] : null
+    const found = routes.indexOf(routes.find((route) => (route.link || `/${route.name.toLowerCase()}`) === `/${pathname}`))
+    return found === -1 ? false : found
+  }
+
   const tabs = (
-    <Tabs value={0} classes={{ indicator: classes.coloredIndicator, root: classes.tabs }}>
+    <Tabs value={activeIndex()} classes={{ indicator: classes.coloredIndicator, root: classes.tabs }}>
       { routes.map(route => 
         <Tab 
           component={Link}
@@ -103,9 +108,19 @@ const Header = ({ categories }) => {
       classes={{ paper: classes.drawer }}
       >
       <List disablePadding>
-        {routes.map(route => 
-          <ListItem divider button key={route.strapi_id}>
-            <ListItemText classes={{primary: classes.listItemText }} primary={route.name} />
+        {routes.map((route, i) => 
+          <ListItem
+            selected={activeIndex() === i} 
+            component={Link}
+            to={route.link || `/${route.name.toLowerCase()}`}
+            divider
+            button
+            key={route.strapi_id}
+          >
+            <ListItemText 
+              classes={{primary: classes.listItemText }} 
+              primary={route.name}
+            />
           </ListItem>
         )}
       </List>
@@ -122,25 +137,23 @@ const Header = ({ categories }) => {
   return (
     <AppBar color="transparent" elevation={0}>
       <Toolbar>
-        <Button>
+        <Button component={Link} to="/">
           <Typography variant="h1">
             <span className={classes.logoText}> VAR </span> X
           </Typography>
         </Button>
         { matchesMD ? drawer : tabs }
-        {actions.map(action => {
+        { actions.filter(action => action.visible).map(action => {
           const image = (<img className={classes.icon} src={action.icon} alt={action.alt} />)
-          if (action.visible) {
-            return (
-              <IconButton
-                key={action.alt} 
-                onClick={action.onClick} 
-                component={action.onClick ? undefined : Link} 
-                to={action.onClick ? undefined : action.link}
-              >  { action.alt === "cart" ? (<Badge overlap="circular" classes={{ badge: classes.badge }}>{image}</Badge>) : (image) }
-              </IconButton>
-            )
-          }
+          return (
+            <IconButton
+              key={action.alt} 
+              onClick={action.onClick} 
+              component={action.onClick ? undefined : Link} 
+              to={action.onClick ? undefined : action.link}
+            > { action.alt === "cart" ? (<Badge overlap="circular" classes={{ badge: classes.badge }}>{image}</Badge>) : (image) }
+            </IconButton>
+          )
         })}
       </Toolbar>
     </AppBar>
