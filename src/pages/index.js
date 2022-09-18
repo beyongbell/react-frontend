@@ -1,12 +1,11 @@
 import * as React from "react"
 
-import Layout from '../components/ui/layout'
+import Main from '@layouts/main'
 
 const IndexPage = () => {
   return (
-    <Layout>
-      <h1>Hi People</h1>
-    </Layout>
+    <Main>
+    </Main>
   )
 }
 

@@ -1,2 +1,2 @@
-import RootWrapper from "./src/components/ui/root-wrapper";
+import RootWrapper from "@templates/root-wrapper";
 export const wrapRootElement = RootWrapper;

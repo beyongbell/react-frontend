@@ -3,9 +3,13 @@ import AppBar from "@mui/material/AppBar"
 import Toolbar from "@mui/material/Toolbar"
 import Typography from "@mui/material/Typography"
 import Button from "@mui/material/Button"
-import IconButton from "@mui/material/IconButton"
 import Tabs from "@mui/material/Tabs"
 import Tab from "@mui/material/Tab"
+import IconButton from "@mui/material/IconButton"
+
+import search from "@images/search.svg"
+import cart from "@images/cart.svg"
+import account from "@images/account-header.svg"
 
 const Header = () => {
     return (
@@ -20,6 +24,15 @@ const Header = () => {
                 <Tab label="Shirts" />
                 <Tab label="Contact Us" />
             </Tabs>
+            <IconButton>
+              <img src={search} alt="search" />
+            </IconButton>
+            <IconButton>
+              <img src={cart} alt="cart" />
+            </IconButton>
+            <IconButton>
+              <img src={account} alt="account" />
+            </IconButton>
         </Toolbar>
       </AppBar>
     )
