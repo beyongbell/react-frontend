@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material/styles/createTheme";
+import { createTheme } from '@mui/material/styles';
 
 const green = "#99B898"
 const darkGreen = "#708670"
@@ -23,7 +23,7 @@ const theme = createTheme({
           red,
           offBlack,
         },
-      },
+    },
     typography: {
         h1: {
             fontSize: "4.5rem",
