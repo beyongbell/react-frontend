@@ -69,9 +69,8 @@ const Footer = () => {
 
     return (
       <footer className={classes.footer}>
-        <Grid container justify="space-between">
-          {/* Links */}
-          <Grid item classes={{ root: classes.linkContainer }}>
+        <Grid container>
+          <Grid xs={12} md={8} item classes={{ root: classes.linkContainer }}>
             <Grid container>
               {Object.keys(routes).map(category => (
                 <Grid item key={category} container direction="column" classes={{ root: classes.linkColumn }}>
@@ -95,9 +94,8 @@ const Footer = () => {
               ))}
             </Grid>
           </Grid>
-          {/* Social Media Icons */}
-          <Grid item>
-            <Grid container direction="column" alignItems="center">
+          <Grid xs={12} md={4} item>
+            <Grid container direction="column" alignItems="end">
               {socialMedia.map(platform => (
                 <Grid item key={platform.alt}>
                   <IconButton classes={{ root: classes.icon }} component="a" disableRipple href={platform.link}>

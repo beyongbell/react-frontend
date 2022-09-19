@@ -1,11 +1,14 @@
 import * as React from "react"
 
 import Main from '@layouts/main'
+import HeroBlock from '@components/home/HeroBlock'
+import PromotionalProducts from '@components/home/PromotionalProducts'
 
 const IndexPage = () => {
   return (
     <Main>
-      <p>Index</p>
+      <HeroBlock />
+      <PromotionalProducts />
     </Main>
   )
 }
