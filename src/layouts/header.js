@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -11,8 +11,6 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Badge from '@mui/material/Badge';
  
@@ -23,7 +21,7 @@ import menu from "@images/menu.svg";
 
 import { makeStyles } from "tss-react/mui";
 
-import { Link, navigate } from "gatsby"
+import { Link } from "gatsby"
 
 const useStyles = makeStyles()((theme) => {
   return {
