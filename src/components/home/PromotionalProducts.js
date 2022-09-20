@@ -82,6 +82,7 @@ const useStyles = makeStyles()((theme) => {
       marginRight: "2rem",
     },
     descriptionContainer: {
+      marginTop: "10rem",
       textAlign: "right",
       [theme.breakpoints.down("md")]: {
         textAlign: "center",
