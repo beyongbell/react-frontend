@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
+import { Grid } from "@mui/material";
+import { Typography } from "@mui/material";
+import { Button } from "@mui/material";
+import { IconButton } from "@mui/material";
 
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
@@ -109,7 +109,7 @@ const PromotionalProducts = () => {
             images {
               localFile {
                 childImageSharp {
-                  gatsbyImageData(width: 200)
+                  gatsbyImageData
                 }
               }
             }
