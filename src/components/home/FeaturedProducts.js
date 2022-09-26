@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { Grid } from "@mui/material";
 import { IconButton } from "@mui/material";
 import { useStaticQuery, graphql } from "gatsby";
+import { Typography } from "@mui/material"
+import { Button } from "@mui/material";
+import { Chip } from "@mui/material" ;
 
 import { makeStyles } from "tss-react/mui";
 
@@ -9,8 +12,11 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 import featuredAdornment from "@images/featured-adornment.svg"
 import frame from "@images/product-frame-grid.svg"
+import explore from "@images/explore.svg"
 
 import clsx from "clsx"
+
+import Rating from '@components/home/Rating'
 
 const useStyles = makeStyles()((theme) => {
     return {
@@ -74,7 +80,23 @@ const useStyles = makeStyles()((theme) => {
         },
         productContainer: {
             margin: "5rem 0",
-        }
+        },
+        exploreContainer: {
+            marginTop: "auto",
+        },
+        exploreButton: {
+            textTransform: "none",
+        },
+        exploreIcon: {
+            height: "1.5rem",
+            marginLeft: "1rem",
+        },
+        chipLabel: {
+            ...theme.typography.h5,
+        },
+        chipRoot: {
+            backgroundColor: theme.palette.secondary.main,
+        },
     }
 })
 
@@ -123,6 +145,24 @@ const FeaturedProducts = () => {
                                 [classes.slideDown]: matchesMD && expanded === i,
                             }),
                         }}>
+                            <Grid item>
+                                <Typography variant="h4">{item.name.split(" ")[0]}</Typography>
+                            </Grid>
+                            <Grid item>
+                                <Rating number={2.5} />
+                            </Grid>
+                            <Grid item>
+                                <Chip
+                                    classes={{ root: classes.chipRoot, label: classes.chipLabel }}
+                                    label={`$${item.variants[0].price}`}
+                                />
+                            </Grid>
+                            <Grid item classes={{ root: classes.exploreContainer }}>
+                                <Button classes={{ root: classes.exploreButton }}>
+                                    <Typography variant="h5"> Details </Typography>
+                                    <img src={explore} alt="go to product details" classes={{ root: classes.exploreIcon }} />
+                                </Button>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
