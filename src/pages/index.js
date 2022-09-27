@@ -5,6 +5,7 @@ import Main from '@layouts/main'
 import HeroBlock from '@components/home/HeroBlock'
 import PromotionalProducts from '@components/home/PromotionalProducts'
 import FeaturedProducts from '@components/home/FeaturedProducts'
+import MarketingButtons from "@components/home/MarketingButtons"
 
 const IndexPage = () => {
   return (
@@ -12,6 +13,7 @@ const IndexPage = () => {
       <HeroBlock />
       <PromotionalProducts />
       <FeaturedProducts />
+      <MarketingButtons />
     </Main>
   )
 }
