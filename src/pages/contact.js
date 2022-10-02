@@ -3,7 +3,7 @@ import { Grid } from "@mui/material";
 import { Typography } from "@mui/material"
 import { Button } from "@mui/material"
 
-import { Link } from "gatsby";
+// import { Link } from "gatsby";
 
 import { makeStyles } from "tss-react/mui";
 
@@ -11,7 +11,9 @@ import address from "@images/address.svg"
 import email from "@images/email-adornment.svg"
 import send from "@images/send.svg"
 import phone from "@images/phone-adornment.svg"
-import name from "@images/name-adornment.svg"
+// import name from "@images/name-adornment.svg"
+
+import clsx from "clsx"
 
 import Main from '@layouts/main'
 
@@ -156,19 +158,21 @@ const Contact = () => {
   const { classes } = useStyles();
   return (
     <Main>
-        <Grid container justify="space-around" alignItems="center">
+        <Grid container justify="space-around" alignItems="center" classes={{ root: classes.mainContainer }}>
           {/* Contact Form */}
-          <Grid item>
-            <Grid container direction="column">
-              <Grid item>
-                Contact Us
+          <Grid item classes={{ root: classes.formWrapper }}>
+            <Grid container classes={{ root: classes.formContainer }} direction="column" justify="space-between" alignItems="center">
+              <Grid item classes={{ root: clsx(classes.titleContainer, classes.blockContainer) }}>
+                <Typography variant="h4">
+                  Contact Us
+                </Typography>
               </Grid>
-              <Grid item>
-                <Button>
+              <Grid item classes={{ root: classes.buttonContainer }}>
+                <Button classes={{ root: classes.sendMessage }}>
                   <Typography variant="h4">
                     send message
                   </Typography>
-                  <img src={send} alt="send message" />
+                  <img src={send} alt="send message" classes={{ root: classes.sendIcon }} />
                 </Button>  
               </Grid>
             </Grid>
@@ -176,32 +180,32 @@ const Contact = () => {
           {/* Contact Info */}
           <Grid item>
             <Grid container direction="column">
-              <Grid item container>
+              <Grid item container alignItems="center">
                 <Grid item>
-                  <img src={address} alt="address" />
+                  <img src={address} alt="address" classes={{ root: classes.contactIcon }} />
                 </Grid>
                 <Grid item>
-                  <Typography variant="h2">
+                  <Typography variant="h2" classes={{ root: classes.contactInfo }}>
                     1234 Main Street , 1992
                   </Typography>
                 </Grid>
               </Grid>
-              <Grid item container>
+              <Grid item container alignItems="center">
                 <Grid item>
-                  <img src={phone} alt="phone" />
+                  <img src={phone} alt="phone" classes={{ root: classes.contactIcon }} />
                 </Grid>
                 <Grid item>
-                  <Typography variant="h2">
+                  <Typography variant="h2" classes={{ root: classes.contactInfo }}>
                     (555) 555-5555
                   </Typography>
                 </Grid>
               </Grid>
-              <Grid item container>
+              <Grid item container alignItems="center">
                 <Grid item>
-                  <img src={email} alt="email" />
+                  <img src={email} alt="email" classes={{ root: classes.contactEmailIcon }} />
                 </Grid>
                 <Grid item>
-                  <Typography variant="h2">
+                  <Typography variant="h2" classes={{ root: classes.contactInfo }}>
                     test@gmail.com
                   </Typography>
                 </Grid>
