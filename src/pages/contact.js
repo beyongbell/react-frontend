@@ -8,7 +8,7 @@ import { Button } from "@mui/material"
 import { makeStyles } from "tss-react/mui";
 
 import address from "@images/address.svg"
-import email from "@images/email-adornment.svg"
+import Email from "@images/EmailAdorment"
 import send from "@images/send.svg"
 import phone from "@images/phone-adornment.svg"
 // import name from "@images/name-adornment.svg"
@@ -179,7 +179,7 @@ const Contact = () => {
           </Grid>
           {/* Contact Info */}
           <Grid item>
-            <Grid container direction="column">
+            <Grid container direction="column" justify="space-between" classes={{ root: classes.infoContainer }}>
               <Grid item container alignItems="center">
                 <Grid item>
                   <img src={address} alt="address" classes={{ root: classes.contactIcon }} />
@@ -201,8 +201,8 @@ const Contact = () => {
                 </Grid>
               </Grid>
               <Grid item container alignItems="center">
-                <Grid item>
-                  <img src={email} alt="email" classes={{ root: classes.contactEmailIcon }} />
+                <Grid item classes={{ root: classes.contactEmailIcon }}>
+                  <Email color="#fff" />
                 </Grid>
                 <Grid item>
                   <Typography variant="h2" classes={{ root: classes.contactInfo }}>
