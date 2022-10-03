@@ -1,8 +1,8 @@
-import * as React from "react"
+import React, { useState } from "react"
 import { Grid } from "@mui/material";
 import { Typography } from "@mui/material"
 import { Button } from "@mui/material"
-
+import { TextField } from '@mui/material'
 // import { Link } from "gatsby";
 
 import { makeStyles } from "tss-react/mui";
@@ -156,6 +156,12 @@ const useStyles = makeStyles()((theme) => {
 
 const Contact = () => {
   const { classes } = useStyles();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+
   return (
     <Main>
         <Grid container justify="space-around" alignItems="center" classes={{ root: classes.mainContainer }}>
@@ -167,13 +173,25 @@ const Contact = () => {
                   Contact Us
                 </Typography>
               </Grid>
-              <Grid item classes={{ root: classes.buttonContainer }}>
-                <Button classes={{ root: classes.sendMessage }}>
-                  <Typography variant="h4">
-                    send message
-                  </Typography>
-                  <img src={send} alt="send message" classes={{ root: classes.sendIcon }} />
-                </Button>  
+              <Grid item container direction="column">
+                <Grid item>
+                  <TextField value={name} placeholder="Name" onChange={e => setName(e.target.value)} classes={{root:classes.textField}} />
+                </Grid>
+                <Grid item>
+                  <TextField value={email} placeholder="Eamil" classes={{root:classes.textField}} />
+                </Grid  >
+                <Grid item>
+                  <TextField value={phone} placeholder="Phone" classes={{root:classes.textField}} />
+                </Grid>
+                <Grid item>
+                  <TextField value={message} placeholder="Message" multiline rows={8} classes={{root:classes.textField}} />
+                </Grid>
+              </Grid>
+              <Grid item component={Button} classes={{ root: clsx(classes.buttonContainer, classes.blockContainer) }}>
+                <Typography variant="h4">
+                  send message
+                </Typography>
+                <img src={send} alt="send message" classes={{ root: classes.sendIcon }} />
               </Grid>
             </Grid>
           </Grid>
@@ -181,7 +199,7 @@ const Contact = () => {
           <Grid item>
             <Grid container direction="column" justify="space-between" classes={{ root: classes.infoContainer }}>
               <Grid item container alignItems="center">
-                <Grid item>
+                <Grid item classes={{ root: classes.iconContainer }}>
                   <img src={address} alt="address" classes={{ root: classes.contactIcon }} />
                 </Grid>
                 <Grid item>
@@ -190,7 +208,7 @@ const Contact = () => {
                   </Typography>
                 </Grid>
               </Grid>
-              <Grid item container alignItems="center">
+              <Grid item container alignItems="center" classes={{ root: classes.middleInfo }}>
                 <Grid item>
                   <img src={phone} alt="phone" classes={{ root: classes.contactIcon }} />
                 </Grid>
@@ -201,8 +219,10 @@ const Contact = () => {
                 </Grid>
               </Grid>
               <Grid item container alignItems="center">
-                <Grid item classes={{ root: classes.contactEmailIcon }}>
-                  <Email color="#fff" />
+                <Grid item classes={{ root: classes.iconContainer }}>
+                  <div className={classes.contactEmailIcon}>
+                    <Email color="#fff" />
+                  </div>
                 </Grid>
                 <Grid item>
                   <Typography variant="h2" classes={{ root: classes.contactInfo }}>
